@@ -1,5 +1,7 @@
 package com.baibl.springboot.service.impl;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -24,6 +26,13 @@ public class PSServiceImpl implements PSService {
 	@Transactional(isolation = Isolation.READ_COMMITTED,timeout = 1)
 	public int insertPS(PS ps) {
 		return myBatisPSDao.insertPS(ps);
+	}
+
+	@Override
+	public Map<String, Object> checkPS(PS ps) {
+		String note = ps.getNote();
+		
+		return null;
 	}
 
 
