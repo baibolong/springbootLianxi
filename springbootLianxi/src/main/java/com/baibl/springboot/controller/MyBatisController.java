@@ -1,6 +1,7 @@
 package com.baibl.springboot.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ public class MyBatisController {
 	@Autowired
 	private PSService psService;
 	
+	/**
+	 * 获取PS
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/getPS")
 	@ResponseBody
 	public PS getPS(Long id) {
@@ -25,7 +31,13 @@ public class MyBatisController {
 		return ps;
 	}
 	
-	@RequestMapping("/insertUser")
+	/**
+	 * 新增PS
+	 * @param PSName
+	 * @param note
+	 * @return
+	 */
+	@RequestMapping("/insertPS")
 	@ResponseBody
 	public Map<String, Object> insertUser(String PSName,String note){
 		PS ps = new PS();
@@ -39,6 +51,21 @@ public class MyBatisController {
 		result.put("PS", ps);
 		
 		return result;
+	}
+	
+	/**
+	 * 定时检查note中是否包含指定字符
+	 * @param note
+	 * @return
+	 */
+	@RequestMapping("/checkPS")
+	@ResponseBody
+	public List<PS> checkPS(String str){
+		
+		
+		List<PS> list = psService.checkPS(str);
+		
+		return list;
 	}
 	
 }

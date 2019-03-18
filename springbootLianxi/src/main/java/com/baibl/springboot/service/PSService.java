@@ -1,6 +1,6 @@
 package com.baibl.springboot.service;
 
-import java.util.Map;
+import java.util.List;
 
 import com.baibl.springboot.pojo.PS;
 
@@ -10,5 +10,5 @@ public interface PSService {
 	
 	int insertPS(PS ps);
 	
-	Map<String,Object> checkPS(PS ps);
+	List<PS> checkPS(String str);
 }

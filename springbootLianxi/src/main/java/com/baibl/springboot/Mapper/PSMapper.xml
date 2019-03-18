@@ -2,13 +2,18 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="com.baibl.springboot.dao.MyBatisPSDao">
-  	<select id="getPS" parameterType="long" resultType="ps">
-  		select id, ps_name as PSName, ps_note as note from ps_Info where id =#{id}
-  	</select>
-  	
-  	<insert id="insertPS" useGeneratedKeys="true" keyProperty="id">
-  		insert into ps_info(ps_name,ps_note) value(#{PSName},#{note})
-  	</insert>
-  </mapper>
+
+   <mapper namespace="com.baibl.springboot.dao.MyBatisPSDao">
+	<select id="getPS" parameterType="long" resultType="ps">
+		select id, ps_name as PSName, ps_note as note from ps_Info where id =#{id}
+	</select>
+
+	<insert id="insertPS" useGeneratedKeys="true" keyProperty="id">
+		insert into ps_info(ps_name,ps_note) value(#{PSName},#{note})
+	</insert>
+
+	<select id="checkPS" parameterType="string" resultType="ps">
+		select id, ps_name as PSName, ps_note as note from ps_Info where note like CONCAT('%', #{note}, '%')
+	</select>
+
+</mapper>
